@@ -6,7 +6,7 @@ const { project_public_id, secret_key } = require('./test/keys');
 const sdk = new ilovepdfSDK(project_public_id, secret_key);
 
 async function convertOfficeToPdf() {
-  const inputFile = path.resolve(__dirname, 'test', 'Process.docx');
+  const inputFile = path.resolve(__dirname, 'test', 'demo.docx');
   const outputFile = path.resolve(__dirname, 'test', 'output.pdf');
   try {
     const task = await sdk.createTask('officepdf');
@@ -37,7 +37,7 @@ async function splitPDF() {
         Title: 'New Documents',
       },
       split_mode: 'ranges',
-      ranges: '1,2',
+      ranges: '1,2,3',
     });
     console.log(result);
 
@@ -48,8 +48,17 @@ async function splitPDF() {
 }
 
 async function test() {
-  await convertOfficeToPdf();
-  await splitPDF();
+  try {
+    await convertOfficeToPdf();
+    await splitPDF();
+  } catch (e) {
+    if (e.response && e.response.data) {
+      console.log(JSON.stringify(e.response.data, null, 2));
+    } else {
+      console.log(e);
+    }
+  }
+
 }
 
 

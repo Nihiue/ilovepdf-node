@@ -13,61 +13,48 @@ $ npm install ilovepdf-sdk
 You can sign up for a iLovePDF account at https://developer.ilovepdf.com
 
 ## Quick Start
+
 ```javascript
-
 const ilovepdfSDK = require('ilovepdf-sdk');
-
 const sdk = new ilovepdfSDK('PROJECT_PUBLIC_ID','SECRET_KEY');
 
-try {
+async function convertOfficeToPdf() {
   const task = await sdk.createTask('officepdf');
-
   await task.addFile('./input.docx');
-  const resultInfo = await task.process();
-
-  // download as file
+  await task.process();
   await task.download('./ouput.pdf');
-
-  // download as stream
-  const stream = await task.downloadAsStream();
-
-} catch (e) {
-  console.log(e);
 }
 
 ```
-## Example
+## More Examples
 
 See demo/index.js.
 
 ## API
 
-### new ilovepdfSDK(PROJECT_PUBLIC_ID, SECRET_KEY)
+### new ilovepdfSDK(projectId, secretKey)
 Create sdk instance.
 
 ### sdk.createTask(taskType)
 Create a task.
 
-```javascript
-// Supported Task Types
-[
-  'merge',
-  'split',
-  'compress',
-  'pdfjpg',
-  'imagepdf',
-  'unlock',
-  'pagenumber',
-  'watermark',
-  'officepdf',
-  'repair',
-  'rotate',
-  'protect',
-  'pdfa',
-  'validatepdfa',
-  'extract'
-]
-```
+Task Type List
+
+* merge
+* split
+* compress
+* pdfjpg
+* imagepdf
+* unlock
+* pagenumber
+* watermark
+* officepdf
+* repair
+* rotate
+* protect
+* pdfa
+* validatepdfa
+* extract
 
 ### task.addFile(filePath[,fileOptions])
 Add file to current task.
@@ -77,6 +64,18 @@ await task.addFile('./input.pdf', {
   rotate: 0
   password: null
 });
+
+```
+
+### task.addFileByStream(filename, stream[,fileOptions])
+Add file to current task.
+
+```javascript
+await task.addFileByStream(myStream, 'input.pdf', {
+  rotate: 0
+  password: null
+});
+
 ```
 
 ### task.process([extraParams])
@@ -87,7 +86,7 @@ About extraParams, see [Process API](https://developer.ilovepdf.com/docs/api-ref
 ```javascript
 await task.process({
   metas: {
-    Title: 'My Best Document'
+    Title: 'My Document'
   },
   ignore_errors: true,
   // SPECIFIC TOOL PARAMETERS
