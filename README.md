@@ -14,7 +14,7 @@ Develop and automate PDF processing tasks like Compress PDF, Merge PDF, Split PD
 $ npm install ilovepdf-sdk
 ```
 
-## Getting Started
+## Quick Start
 ```javascript
 
 const ilovepdfSDK = require('ilovepdf-sdk');
@@ -39,8 +39,16 @@ try {
 
 ```
 
-## Supported Task Types
+## API
+
+### new ilovepdfSDK(PROJECT_PUBLIC_ID, SECRET_KEY)
+Create sdk instance.
+
+### sdk.createTask(taskType)
+Create a task.
+
 ```javascript
+// Supported Task Types
 [
   'merge',
   'split',
@@ -59,6 +67,42 @@ try {
   'extract'
 ]
 ```
+
+### task.addFile(filePath[,fileOptions])
+Add file to current task.
+
+```javascript
+task.addFile('./input.pdf', {
+  rotate: 0
+  password: null
+});
+```
+
+### task.process([extraParams])
+Start process current task.
+
+About extraParams, see [Process API](https://developer.ilovepdf.com/docs/api-reference#process)
+
+```javascript
+task.process({
+  metas: {
+    Title: 'My Best Document'
+  },
+  ignore_errors: true,
+  // SPECIFIC TOOL PARAMETERS
+  split_mode: 'ranges'
+});
+```
+
+
+### task.download(outputFilePath)
+
+Download result file.
+
+### task.downloadAsStream
+
+Download result file as stream.
+
 
 ## Documentation
 
