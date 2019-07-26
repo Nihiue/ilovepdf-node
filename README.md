@@ -73,7 +73,7 @@ Create a task.
 Add file to current task.
 
 ```javascript
-task.addFile('./input.pdf', {
+await task.addFile('./input.pdf', {
   rotate: 0
   password: null
 });
@@ -85,7 +85,7 @@ Start process current task.
 About extraParams, see [Process API](https://developer.ilovepdf.com/docs/api-reference#process)
 
 ```javascript
-task.process({
+await task.process({
   metas: {
     Title: 'My Best Document'
   },
