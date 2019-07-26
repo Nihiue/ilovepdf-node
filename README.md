@@ -71,7 +71,7 @@ await task.addFile('./input.pdf', {
 Add file to current task.
 
 ```javascript
-await task.addFileByStream(myStream, 'input.pdf', {
+await task.addFileByStream('input.pdf', myStream, {
   rotate: 0
   password: null
 });
