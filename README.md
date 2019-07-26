@@ -4,15 +4,13 @@ node.js SDK for [iLovePDF REST API](https://developer.ilovepdf.com)
 
 [![NPM](https://nodei.co/npm/ilovepdf-sdk.png)](https://npmjs.org/package/ilovepdf-sdk)
 
-
-You can sign up for a iLovePDF account at https://developer.ilovepdf.com
-
 Develop and automate PDF processing tasks like Compress PDF, Merge PDF, Split PDF, convert Office to PDF, PDF to JPG, Images to PDF, add Page Numbers, Rotate PDF, Unlock PDF, stamp a Watermark and Repair PDF. Each one with several settings to get your desired results.
 
-## Install
+## Install & Register Developer Account
 ```bash
 $ npm install ilovepdf-sdk
 ```
+You can sign up for a iLovePDF account at https://developer.ilovepdf.com
 
 ## Quick Start
 ```javascript
@@ -38,6 +36,9 @@ try {
 }
 
 ```
+## Example
+
+See demo/index.js.
 
 ## API
 
