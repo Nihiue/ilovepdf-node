@@ -1,6 +1,6 @@
 {
   "name": "ilovepdf-sdk",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "node sdk for ilovepdf.com restful api",
   "main": "lib/index.js",
   "scripts": {},
